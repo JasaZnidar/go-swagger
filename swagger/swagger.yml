@@ -1,0 +1,71 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Greeter Server
+paths:
+  /hello:
+    get:
+      produces:
+        - text/plain
+      parameters:
+        - name: name
+          required: false
+          type: string
+          in: query
+          description: defaults to World if not given
+      operationId: getHello
+      responses:
+        200:
+          description: returns a greeting
+          schema:
+              type: string
+              description: contains the actual greeting as plain text
+  /time:
+    get:
+      produces:
+        - text/plain
+      operationId: getTime
+      responses:
+        200:
+          description: returns the current time
+          schema:
+            type: string
+            description: contains current timestamp as plain text
+  /user:
+    get:
+      produces:
+        - application/json
+      parameters:
+        - name: name
+          required: true
+          type: string
+          in: query
+          description: name of the person
+        - name: pass
+          required: true
+          type: string
+          in: query
+          description: name of the person
+      responses:
+        200:
+          description: returns all users within criteria
+          schema:
+            type: object
+            description: contains JSON of user name and boolean if login was successful
+            required:
+              - name
+              - result
+            properties:
+              name:
+                type: string
+              pass:
+                type: boolean
+        500:
+          description: error
+          schema:
+            type: object
+            required:
+              - error
+            properties:
+              error:
+                type: string
