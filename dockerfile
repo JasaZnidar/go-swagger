@@ -1,9 +1,8 @@
 FROM golang:1.19-alpine
 
-WORKDIR /usr/local/go/src/Greeter
+WORKDIR /go/src/Greeter
 
-COPY go.mod .
-COPY go.sum .
+COPY go.mod go.sum ./
 RUN go mod download && go mod verify
 
 

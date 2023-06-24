@@ -6,17 +6,17 @@ services:
     ports:
       - "3000:3000"
     image: greeter
-    build: ./
+    build: .
     networks:
-      - greeter-network
-  mongo-db:
+      - greeter
+  mongo:
     image: mongo
-    container_name: greeter-mongo-db
+    container_name: greeter-mongo
     ports:
-      - "27027-27029:27027-27029"
+      - "27017-27019:27017-27019"
     networks:
-      - greeter-network
+      - greeter
 networks:
-  greeter-network:
-    name: greeter-network
+  greeter:
+    name: greeter
     driver: bridge

@@ -62,7 +62,7 @@ func main() {
 		// connect to DB
 		ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
 		defer cancel()
-		client, err := mongo.Connect(ctx, options.Client().ApplyURI("mongodb://127.0.0.1:27027"))
+		client, err := mongo.Connect(ctx, options.Client().ApplyURI("mongodb://127.0.0.1:27017"))
 		if err != nil {
 			errStr := err.Error()
 			payload := operations.GetUserInternalServerErrorBody{Error: &errStr}
